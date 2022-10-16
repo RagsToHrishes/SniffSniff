@@ -1,6 +1,7 @@
 import styles from './css/Search.module.css'
 import Header from './components/Header'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Search({ data, category }) {
 
@@ -45,9 +46,13 @@ export default function Search({ data, category }) {
                         {courseSelect && data.filter(values => values[0] == courseSelect).map((item, index) => (
                             <div key={index}>
                                 {!item[3] && <div className={styles.noChannels}>
-                                    <p>It seems like there are no channels for the class you are searching for...</p>
+                                    <h3>It seems like there are no channels for the class you are searching for...</h3>
                                     <h2>Be the one to create it!</h2>
                                     <p>Once you create a channel it will update into our database so other classmates can sniff you out too!</p>
+                                    <div className={styles.channelButtons}>
+                                        <a>Create Discord Channel</a>
+                                        <a>Create Slack Channel</a>
+                                    </div>
                                     <img src="./channelavatar.png"/>
                                 </div>
                                 }
