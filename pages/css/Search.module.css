@@ -28,13 +28,14 @@
     font-family: 'Helvetica';
 }
 
-.category, .courses {
+.category,
+.courses {
     overflow-y: scroll;
     height: 500px;
 }
 
 .category p {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .category p:hover {
@@ -54,4 +55,8 @@
 .singleCourse p {
     font-size: 20px;
     padding: 10px 20px;
+}
+
+.category {
+    max-width: 350px;
 }
