@@ -6,12 +6,12 @@ body {
 
 @font-face {
   font-family: "TerminaDemi";
-  src: url('../fonts/Fontspring-DEMO-termina-bold.otf');
+  src: url('../fonts/terminaDemi.otf');
 }
 
 @font-face {
   font-family: "TerminaBold";
-  src: url('../fonts/Fontspring-DEMO-termina-demi.otf');
+  src: url('../fonts/terminaBold.otf');
 }
 
 @font-face {

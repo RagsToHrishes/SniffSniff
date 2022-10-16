@@ -1,9 +1,13 @@
 import styles from './css/Search.module.css'
+import Header from './components/Header'
 
 export default function Search({ data }) {
     return (
         <div>
-            <h1 className={styles.search}>HI</h1>
+            <Header />
+            <div className={styles.search}>
+                <p className={styles.searchh}>Search!</p>
+            </div>
         </div>
     )
 }

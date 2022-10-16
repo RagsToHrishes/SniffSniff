@@ -1,3 +1,7 @@
 .search {
-    font-family: 'TerminaDemi';
+    margin: 20px 50px;
+}
+
+.searchh {
+    font-family: 'TerminaBold';
 }
