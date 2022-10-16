@@ -20,15 +20,27 @@ Label: midterm in two weeks
 Example: I got my bank card stolen.
 Label: None
 --
-Example: 
-Label: None
---
 Example: I hate my professor so much he give me candy to eat every day which gives me cavities and now my teeth hurt and are ruined, so this class is actually not beneficial to the human psyche and does not conduct a positive learning environment. I also got a F in the class. The homework is now due next week.
 Label: The homework is due next week.
 --
 Example: I hate my life eveyrthing sucks, but at least I know that the midterm is curved harshly
 Label: The midterm is curved harshly.
-
 ---
 Example:MIDTERM DUE TOMORROW OH SHITTT SSDFDSFSDGFDSG ASDKGNDFSKGNDFSAKFGNDKGNDFSKFNDS 
 Label:midterm due tomorrow
+---
+Example:Yesterday in class we basically learned about vector spaces and a bunch of other cool stuff Your artwork is amazing, but did you know that the homework extensions are till tomorrow? 
+Label:Homework extension till tomorrow. Yesterday in class we learned about vector spaces.
+---
+Example:Yesterday the professor taught circuits, but it was so boring 😦 
+Label:The professor taught circuits yesterday.
+---
+Example:Goddd, I hate this class, Homework is postponed till next wednesday Theres no class tomorrow, I hate my life please help me I'm drowning in sea of sorrow 
+Label:Theres no class tomorrow and  Homework is postponed till next wednesday
+---
+Example:We are getting a substitute prof as well Theres no class for the next 6 days, I hate my life please help me I'm drowning in sea of sorrow
+Goddd, I hate this class, Homework is postponed. 
+Label: No class for the next 6 days and Homework is postponed and we have a substitute professor
+---
+Example:SPAM SPAM SPAM SPAM SPAM SPAM There's a final at 3pm tomorrow SPAM SPAM SPAM SPAM SPAM SPAM SPM 
+Label:There's a final at 3pm tomorrow

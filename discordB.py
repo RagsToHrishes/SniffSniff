@@ -5,16 +5,22 @@ import os
 from extract import cohereExtractor
 from datetime import datetime
 from profanity_filter import ProfanityFilter
+import cohere
 
+api_key = 'fVYh2kByOseZVbkvSQWneb9chpcPE7oG1tlIl0Ij'
+
+co = cohere.Client(api_key)
 
 pf = ProfanityFilter()
 
 ExampleDict = {}
 #Get Prompt Examples for NLP
 
+prompt = ""
 
 def updateDictionary():
     global ExampleDict
+    global prompt
     ExampleDict = {}
     #Get Prompt Examples for NLP
     with open('./examples/ExamDates.txt') as f:
@@ -43,6 +49,7 @@ def updateDictionary():
                 if(line[0:5]) == "Label":
                     ExampleDict[temp][exampletemp] = line[6:]
 
+    prompt=""
     with open('./examples/Summary.txt') as f:
         temp = "Summary"
         exampletemp = None
@@ -53,10 +60,14 @@ def updateDictionary():
                     ExampleDict[temp] = {}
                 if(line[0:7]) == "Example":
                     exampletemp = line[8:]
+                    prompt += "Passage: " + exampletemp + "\n\n"
                 if(line[0:5]) == "Label":
                     ExampleDict[temp][exampletemp] = line[6:]
+                    prompt += "TLDR: "+line[6:] + "\n--\n"
 
 updateDictionary()
+
+
 
 
 DateExtractor = cohereExtractor([desc for desc in ExampleDict["Exam Dates"].keys()], 
@@ -73,6 +84,8 @@ SummaryExtractor = cohereExtractor([desc for desc in ExampleDict["Summary"].keys
                                 [ExampleDict["Summary"][key] for key in ExampleDict["Summary"].keys()], [],
                                        "", 
                                        "extract the summary from the post:")
+
+
 
 async def sniffExamDates(msg, maxCount=10):
     ExamandDates = []
@@ -124,6 +137,7 @@ async def sniffCourseStaff(msg, maxCount=10):
     
 
 async def sniffSummary(msg, maxCount=10):
+    global prompt
     msgContent = ""
 
     count = 0
@@ -137,10 +151,20 @@ async def sniffSummary(msg, maxCount=10):
                     mes.content.replace("*", "@")
                     msgContent += mes.content + " "
                     
-    print(msgContent)
-    summary = SummaryExtractor.extract(msgContent)
+    newPrompt = prompt + "Passage: " + msgContent + "\n\n"+ "TLDR:"
 
-    return (summary, msgContent)
+    print(newPrompt)
+    #summary = SummaryExtractor.extract(msgContent)
+    Summarizer = co.generate( 
+        model='large', 
+        prompt = newPrompt,
+        max_tokens=1000, 
+        temperature=0.9,
+        stop_sequences=["--"])
+    summary = Summarizer.generations[0].text
+
+
+    return (summary[:len(summary)-2], msgContent)
                     
                         
    
