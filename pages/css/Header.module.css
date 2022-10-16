@@ -1,7 +1,7 @@
 .header {
     display: flex;
     flex-direction: row;
-    margin: 30px 50px;
+    margin: 30px 100px;
     justify-content: space-between;
 }
 
