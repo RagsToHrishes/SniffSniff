@@ -46,10 +46,12 @@
 .courses {
     background-color: #FFDBBC;
     border-radius: 20px;
+    padding: 8px 25px;
 }
 
 .singleCourse {
     background-color: white;
+    border-radius: 10px;
 }
 
 .singleCourse p {
