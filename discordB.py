@@ -3,6 +3,7 @@ load_dotenv()
 import discord
 import os
 from extract import cohereExtractor
+from datetime import datetime
 
 
 ExampleDict = {}
@@ -47,18 +48,20 @@ async def on_message(msg):
                     label = DateExtractor.extract(mes.content)
                                            # the default amount of 100        
                     if label != "None":
-                        await msg.channel.send(label)
+                        await msg.channel.send("Category: Exam Dates\n"+label + "\nFrom: msg:\"" + " " + mes.content + "\" By: " + str(mes.author) + " At: " + mes.created_at.strftime("%m/%d/%Y, %H:%M:%S"))
                         break
     if msg.content.startswith("$sniff improve"):
         async for mes in msg.channel.history(limit=10000): # As an example, I've set the limit to 10000
-            if mes.author != client.user:                        # meaning it'll read 10000 messages instead of           
-                if not is_command(mes.content):  
-                    label = DateExtractor.extract(mes.content)
-                                           # the default amount of 100        
-                    if label != "None":
-                        await msg.channel.send(labldsf + " From: msg:" + " mes.")
-                        break
+            if mes.author == client.user:                        # meaning it'll read 10000 messages instead of           
+                categoryOfExtract = mes.content.split("\n")[0]
+                categoryOfExtract = categoryOfExtract[10:]
+                print(categoryOfExtract)
+                with open('examples.txt', "r+") as f:
+                    pass
 
+                
+                                        # the default amount of 100        
+                
 
 client.run(os.getenv("TOKEN"))
 

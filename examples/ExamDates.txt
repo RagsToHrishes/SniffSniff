@@ -9,10 +9,10 @@ Example:I can tell them "today" but I have a 2hr long final in 20 minutes so itd
 Label:Final: Today
 ---
 Example:Yeah, The midterm is tomorrow :(
-Label: Midterm:Tomorrow
+Label:Midterm:Tomorrow
 ---
 Example: Oh shucks, the midterm is day after tommorow
-Label: Midterm: Day After Tomorrow
+Label:Midterm: Day After Tomorrow
 ---
 Example:Ahh I don't like this class!
-Label: None
+Label:None
