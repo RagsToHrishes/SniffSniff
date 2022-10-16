@@ -78,6 +78,18 @@ export default function Search({ data, category }) {
                                     </div>
                                     <img src="./channelavatar.png"/>
                                 </div>}
+                                {item[3] && <div className={styles.hasChannels}>
+                                    {console.log(item[3])}
+                                    <div className={styles.discordBox}>
+                                        <img src='./discord.png'/>
+                                        <a href={item[3]} target="_blank" rel="noopener noreferrer">Join Discord Link</a>
+                                    </div>
+                                    <div className={styles.slackBox}>
+                                        <img src='./slack.png' />
+                                        <a>Join Slack Link</a>
+                                    </div>
+                                </div>
+                                }
                             </div>
                         ))}
                     </div>

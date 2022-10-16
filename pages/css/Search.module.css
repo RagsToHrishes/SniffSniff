@@ -143,3 +143,74 @@
     cursor: pointer;
     width: 100px;
 }
+
+.hasChannels {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+}
+
+.discordBox {
+    display: flex;
+    flex-direction: column;
+    background-color: #FF9F00;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    padding: 50px 50px;
+    row-gap: 25px;
+
+}
+
+.discordBox img {
+    width: 65px;
+}
+
+.discordBox a {
+    font-family: 'Helvetica';
+    font-weight: bolder;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.discordBox a:hover {
+    background-color: #FFDBBC;
+
+}
+
+.slackBox {
+    display: flex;
+    flex-direction: column;
+    background-color: #FF9F00;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    padding: 50px 50px;
+    row-gap: 25px;
+}
+
+.slackBox img {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+}
+
+.slackBox a {
+    font-family: 'Helvetica';
+    font-weight: bolder;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.slackBox a:hover {
+    background-color: #FFDBBC;
+}
