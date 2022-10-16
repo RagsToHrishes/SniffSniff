@@ -85,16 +85,20 @@
 .noChannels {
     display: flex;
     flex-direction: column;
-    max-width: 340px;
+    max-width: 300px;
     justify-content: center;
+    align-items: center;
 }
 
 .noChannels img {
+    padding-top: 20px;
     width: 300px;
 }
 
 .noChannels h2 {
     font-size: 20px;
+    margin: 0;
+    text-align: left;
 }
 
 .noChannels p {
@@ -110,22 +114,32 @@
 .channelButtons {
     display: flex;
     flex-direction: column;
-    row-gap: 22px;
     background-color: #FFDBBC;
     padding: 30px 50px;
-    justify-content: space-between;
     border-radius: 13px;
-
 }
 
-.channelButtons a {
-    display: flex;
-    justify-content: center;
-    font-size: 15px;
-    font-family: 'Helvetica';
-    font-weight: bolder;
+.channelButtons input {
     background-color: #FF9F00;
-    border-radius: 15px;
-    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    padding: 7px 20px;
+    color: white;
+}
 
+.channelButtons form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.channelButtons button {
+    background-color: #896BFD;
+    border: none;
+    border-radius: 20px;
+    padding: 7px 0px;
+    color: white;
+    cursor: pointer;
+    width: 100px;
 }

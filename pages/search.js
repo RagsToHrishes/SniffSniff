@@ -1,13 +1,33 @@
 import styles from './css/Search.module.css'
 import Header from './components/Header'
 import { useState } from 'react'
-import Link from 'next/link'
 
 export default function Search({ data, category }) {
 
     const [categorySelect, setCategorySelect] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
     const [courseSelect, setCourseSelect] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const data = {
+            course: courseSelect,
+            discord: e.target.value
+        }
+
+        const JSONdata = JSON.stringify(data);
+        const endpoint = '/api/updatediscord';
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSONdata
+        }
+
+        await fetch(endpoint, options).catch(err => console.log(err))
+    }
 
     return (
         <div>
@@ -48,10 +68,13 @@ export default function Search({ data, category }) {
                                 {!item[3] && <div className={styles.noChannels}>
                                     <h3>It seems like there are no channels for the class you are searching for...</h3>
                                     <h2>Be the one to create it!</h2>
-                                    <p>Once you create a channel it will update into our database so other classmates can sniff you out too!</p>
+                                    <p>Once you create a channel, add it below, so other classmates can sniff you out too!</p>
                                     <div className={styles.channelButtons}>
-                                        <a>Create Discord Channel</a>
-                                        <a>Create Slack Channel</a>
+                                        <form onSubmit={handleSubmit}>
+                                            <input type="text" placeholder="enter discord channel..."/>
+                                            <input type="text" placeholder="enter slack link..."/>
+                                            <button type="submit">Submit</button>
+                                        </form>
                                     </div>
                                     <img src="./channelavatar.png"/>
                                 </div>}
