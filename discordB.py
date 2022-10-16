@@ -6,8 +6,26 @@ from extract import cohereExtractor
 from datetime import datetime
 from profanity_filter import ProfanityFilter
 import cohere
+from cohere.classify import Example
+
 
 api_key = 'fVYh2kByOseZVbkvSQWneb9chpcPE7oG1tlIl0Ij'
+
+examples=[Example("This class is amazing, I learnt so much from it!", "positive"), 
+            Example("The professor does such a good job explaining.", "positive"), 
+            Example("The topics this week are so interestings", "positive"), 
+            Example("LOVE THIS CLASS, GSIs are so nice and the project was so fun", "positive"), 
+            Example("I feel really good, my midterm scores are above average", "positive"), 
+            Example("ughhh this class sucks, everything is so hard", "negative"), 
+            Example("the GSIs don't help at all and the professor never responds to emails", "negative"), 
+            Example("That final was so hard, I got so below average, like -0.8std", "negative"), 
+            Example("Dude the professor doesn't teach properly, and we're behind on material", "negative"), 
+            Example("Office hour queues are so long, it takes ages to get help", "negative"), 
+            Example("The professor could be doing better, maybe he'll change his style", "neutral"), 
+            Example("I had a flight yesterday, that's why I missed the midterm", "neutral"), 
+            Example("Can anyone show me the GSI's OH timings or send me his email?", "neutral"), 
+            Example("Where are the midterms going to be? What timings?", "neutral"), 
+            Example("I think the solution to the homework is to use the axiom of choice", "neutral")]
 
 co = cohere.Client(api_key)
 
@@ -165,6 +183,40 @@ async def sniffSummary(msg, maxCount=10):
 
 
     return (summary[:len(summary)-2], msgContent)
+
+async def sniffSentiment(msg, maxCount=10):
+    global prompt
+    SentimentSum = 0
+    num = 0
+
+    count = 0
+    async for mes in msg.channel.history(limit=100): # As an example, I've set the limit to 10000
+            if count >= maxCount:
+                break
+            if mes.author != client.user:                        # meaning it'll read 10000 messages instead of           
+                if not is_command(mes.content):  
+                    
+                    count += 1
+                    mes.content = pf.censor(mes.content)
+                    mes.content.replace("*", "@")
+                    response = co.classify(
+                        model='small',
+                        inputs=[ mes.content],
+                        examples=examples)
+                    pred = response.classifications[0].prediction
+                    if pred == "positive":
+                        SentimentSum += 1
+                    elif pred == "negative":
+                        SentimentSum += 0
+                    else:
+                        SentimentSum += 0.5
+
+                    num += 1
+                     
+
+
+    return SentimentSum/num
+                    
                     
                         
    
@@ -233,6 +285,31 @@ async def on_message(msg):
         else:
             msgToSend = "Category: Channel Summary\n"+summ
             await msg.channel.send(msgToSend)
+
+    if msg.content.startswith("$sniff sentiment"):
+        if len(msg.content.split(" ")) > 2:
+            maxCount = int(msg.content.split(" ")[2])
+            sent = await sniffSentiment(msg, maxCount)
+        else:
+            sent = await sniffSentiment(msg)
+
+        sentCat = ""
+        if sent <= 0.1:
+            sentCat= "Students hate the class"
+        elif 0.1 < sent <= 0.4:
+            sentCat= "Students dislike the class"
+        elif 0.4 < sent <= 0.5:
+            sentCat= "Students are neutral towards the class"
+        elif 0.5 < sent <= 0.8:
+            sentCat= "Students like the class"
+        else:
+            sentCat= "Students love the class"
+
+        msgToSend = "Category: Channel Sentiment\n"+"Class sentiment: " + sentCat +" Sent Score: " + str(sent)
+        await msg.channel.send(msgToSend)
+        
+
+        
 
 
     if msg.content.startswith("$sniff improve"):
