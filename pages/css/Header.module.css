@@ -24,3 +24,11 @@
 .header a:hover {
     color: #FF9F00;
 }
+
+.activePage {
+    color: #FF9F00;
+}
+
+.nonActive {
+    
+}

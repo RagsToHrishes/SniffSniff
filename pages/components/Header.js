@@ -1,7 +1,12 @@
 import styles from '../css/Header.module.css'
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 
 export default function Header() {
+
+    const myRouter = useRouter()
+    const currRoute = myRouter.pathname;
+
     return (
         <div>
             <div className={styles.header}>
@@ -13,12 +18,12 @@ export default function Header() {
                 <div className={styles.options}>
                     <Link href="/">
                         <a>
-                            <p>Home</p>
+                            <p className= {currRoute === '/' ? styles.activePage : styles.nothing}>Home</p>
                         </a>
                     </Link>
                     <Link href="/search">
                         <a>
-                            <p>Courses</p>
+                            <p className= {currRoute === '/search' ? styles.activePage : styles.nothing}>Courses</p>
                         </a>
                     </Link>
                 </div>
