@@ -16,3 +16,19 @@ Label: The project is due on Friday and you can get 2 points extra credit if tur
 --
 Example: I got my bank card stolen! Like how fucking dare you! Like ugh I was about to head to kips tmr like why does this happen to me I am so tired right nwo dont talk to m e. midterm in two weeks. Im so  nervous.
 Label: midterm in two weeks
+--
+Example: I got my bank card stolen.
+Label: None
+--
+Example: 
+Label: None
+--
+Example: I hate my professor so much he give me candy to eat every day which gives me cavities and now my teeth hurt and are ruined, so this class is actually not beneficial to the human psyche and does not conduct a positive learning environment. I also got a F in the class. The homework is now due next week.
+Label: The homework is due next week.
+--
+Example: I hate my life eveyrthing sucks, but at least I know that the midterm is curved harshly
+Label: The midterm is curved harshly.
+
+---
+Example:MIDTERM DUE TOMORROW OH SHITTT SSDFDSFSDGFDSG ASDKGNDFSKGNDFSAKFGNDKGNDFSKFNDS 
+Label:midterm due tomorrow

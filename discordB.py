@@ -74,12 +74,16 @@ SummaryExtractor = cohereExtractor([desc for desc in ExampleDict["Summary"].keys
                                        "", 
                                        "extract the summary from the post:")
 
-async def sniffExamDates(msg):
+async def sniffExamDates(msg, maxCount=10):
     ExamandDates = []
     msgs = []
-    async for mes in msg.channel.history(limit=10000): # As an example, I've set the limit to 10000
+    count = 0
+    async for mes in msg.channel.history(limit=100): # As an example, I've set the limit to 10000
+            if count >= maxCount:
+                break
             if mes.author != client.user:                        # meaning it'll read 10000 messages instead of           
                 if not is_command(mes.content):  
+                    count += 1
                     mes.content = pf.censor(mes.content)
                     mes.content.replace("*", "@")
                     label = DateExtractor.extract(mes.content)
@@ -97,12 +101,16 @@ async def sniffExamDates(msg):
 
     return (ExamandDates,msgs)
 
-async def sniffCourseStaff(msg):
+async def sniffCourseStaff(msg, maxCount=10):
     CourseStaff = []
     msgs = []
-    async for mes in msg.channel.history(limit=10): # As an example, I've set the limit to 10000
+    count = 0
+    async for mes in msg.channel.history(limit=100): # As an example, I've set the limit to 10000
+            if count >= maxCount:
+                break
             if mes.author != client.user:                        # meaning it'll read 10000 messages instead of           
                 if not is_command(mes.content):  
+                    count += 1
                     mes.content = pf.censor(mes.content)
                     mes.content.replace("*", "@")
                     label = CourseStaffExtractor.extract(mes.content)
@@ -115,19 +123,24 @@ async def sniffCourseStaff(msg):
 
     
 
-async def sniffSummary(msg, limit=10):
+async def sniffSummary(msg, maxCount=10):
     msgContent = ""
 
-    async for mes in msg.channel.history(limit=limit): # As an example, I've set the limit to 10000
+    count = 0
+    async for mes in msg.channel.history(limit=100): # As an example, I've set the limit to 10000
+            if count >= maxCount:
+                break
             if mes.author != client.user:                        # meaning it'll read 10000 messages instead of           
                 if not is_command(mes.content):  
+                    count += 1
                     mes.content = pf.censor(mes.content)
                     mes.content.replace("*", "@")
                     msgContent += mes.content + " "
                     
+    print(msgContent)
     summary = SummaryExtractor.extract(msgContent)
 
-    return summary
+    return (summary, msgContent)
                     
                         
    
@@ -149,7 +162,12 @@ async def on_message(msg):
     if msg.author == client.user:
         return
     if msg.content.startswith("$sniff examdates"):
-        sols = await sniffExamDates(msg)
+        if len(msg.content.split(" ")) > 2:
+            maxCount = int(msg.content.split(" ")[2])
+            sols = await sniffExamDates(msg,maxCount)
+        else:
+            sols = await sniffExamDates(msg)
+        sols = await sniffExamDates(msg, limit)
         if len(sols[0]) == 0:
             await msg.channel.send("No useful information found")
         else:
@@ -162,7 +180,11 @@ async def on_message(msg):
             await msg.channel.send(msgToSend)
 
     if msg.content.startswith("$sniff coursestaff"):
-        sols = await sniffCourseStaff(msg)
+        if len(msg.content.split(" ")) > 2:
+            maxCount = int(msg.content.split(" ")[2])
+            sols = await sniffCourseStaff(msg,maxCount)
+        else:
+            sols = await sniffCourseStaff(msg)
         if len(sols[0]) == 0:
             await msg.channel.send("No useful information found")
         else:
@@ -175,10 +197,14 @@ async def on_message(msg):
             await msg.channel.send(msgToSend)
 
     if msg.content.startswith("$sniff summary"):
-        msgparams = msg.content.split(" ")
-        summ = await sniffSummary(msg)
+        if len(msg.content.split(" ")) > 2:
+            maxCount = int(msg.content.split(" ")[2])
+            summ = await sniffSummary(msg, maxCount)
+        else:
+            summ = await sniffSummary(msg)
+        summ = summ[0]
 
-        if len(summ) == 0:
+        if summ == "None":
             await msg.channel.send("No useful information found")
         else:
             msgToSend = "Category: Channel Summary\n"+summ
@@ -202,9 +228,23 @@ async def on_message(msg):
                 if categoryOfExtract == "Course Staff":
                     with open('./examples/CourseStaff.txt', "a") as f:
                         f.write("\n---\nExample:"+msgDataExample+"\nLabel:"+msgLabelToPut)
-                if categoryOfExtract == "Summary":
-                    with open('./examples/Summary.txt', "a") as f:
-                        f.write("\n---\nExample:"+msgDataExample+"\nLabel:"+msgLabelToPut)                   
+                if categoryOfExtract == "Channel Summary":
+                    content = None
+                    async for mes in msg.channel.history(limit=10000):
+                        if mes.author != client.user:
+                            if is_command(mes.content):
+                                if mes.content.split(" ")[1] == "summary":
+                                    lim = None
+                                    if len(mes.content.split(" ")) > 2:
+                                        lim = int(mes.content.split(" ")[2])
+                                    content = await sniffSummary(mes,lim)
+                                    content = content[1]
+                                    break
+
+                                
+                    if content != None:
+                        with open('./examples/Summary.txt', "a") as f:
+                            f.write("\n---\nExample:"+content+"\nLabel:"+msgLabelToPut)                   
                 updateDictionary()
                 DateExtractor = cohereExtractor([desc for desc in ExampleDict["Exam Dates"].keys()], 
                                 [ExampleDict["Exam Dates"][key] for key in ExampleDict["Exam Dates"].keys()], [],
