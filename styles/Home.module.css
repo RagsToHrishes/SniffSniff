@@ -130,11 +130,16 @@
 }
 
 .downloadButton {
+    display: flex;
+    align-content: center;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
     background-color: #896BFD;
     font-family: 'TerminaBold';
     color: white;
     border-radius: 15px;
-    padding: 15px 50px;
+    padding: 15px 90px;
     text-decoration: none;
 
 }
