@@ -1,12 +1,44 @@
 import styles from './css/Search.module.css'
 import Header from './components/Header'
 
-export default function Search({ data }) {
+export default function Search({ data, category }) {
+    console.log(data)
     return (
         <div>
             <Header />
             <div className={styles.search}>
-                <p className={styles.searchh}>Search!</p>
+                <div className={styles.searchButton}>
+                    <img src="/search.png" width="20px" height="20px"/>
+                    <input type="text" placeholder="search class here..."/>
+                </div>
+                <div className={styles.results}>
+                    <div>
+                        <h1>Category</h1>
+                        <p>Scroll and click your class category</p>
+                        <div className={styles.category}>
+                            {category && category.map((item, index) => (
+                                <div key={index}>
+                                    <p>{item}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <h1>Courses</h1>
+                        <p>Scroll, find, and click your class number</p>
+                        <div className={styles.courses}>
+                            {data && data.map((item, index) => (
+                                <div key={index} className={styles.singleCourse}>
+                                    <p>{item[0]}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <h1>Channels</h1>
+                        <p>Select and join the right class channels</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -28,24 +60,33 @@ export const getServerSideProps = async () => {
 
         client.release();
 
-        const dict = {}
+        console.log(courses)
+
+        const coursesList = []
+        const category = new Set()
+
         for (var i = 0; i < courses.rows.length; i++) {
-            dict[courses.rows[i].id] = {
-                "course": courses.rows[i].course,
-                "title": courses.rows[i].title,
-                "subjectArea": courses.rows[i].subjectArea,
-                "discord": courses.rows[i].discord
-            }
+            coursesList.push(
+                [courses.rows[i].course,
+                courses.rows[i].title,
+                courses.rows[i].subjectArea,
+                courses.rows[i].discord]
+            )
+            category.add(courses.rows[i].subjectArea)
         }
 
-        return dict
+        return [coursesList, category]
     }
 
-    const data = await getCourses();
-  
+    const courseInfo = await getCourses();
+    const data = courseInfo[0]
+    const category = Array.from(courseInfo[1])
+    category.sort()
+
     return {
       props: {
-        data
+        data,
+        category
       },
     };
   };

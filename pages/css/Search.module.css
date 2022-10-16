@@ -2,6 +2,56 @@
     margin: 20px 50px;
 }
 
-.searchh {
-    font-family: 'TerminaBold';
+.searchButton {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.searchButton input {
+    background-color: #FFEBDA;
+    border: none;
+    border-radius: 20px;
+    padding: 7px 20px;
+}
+
+.results {
+    display: flex;
+    flex-direction: row;
+    font-family: 'TerminaDemi';
+    justify-content: space-between;
+}
+
+.results p {
+    font-family: 'Helvetica';
+}
+
+.category, .courses {
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.category p {
+    font-size: 20px;
+}
+
+.category p:hover {
+    color: #FF9F00;
+    cursor: pointer;
+}
+
+.courses {
+    background-color: #FFDBBC;
+    border-radius: 20px;
+}
+
+.singleCourse {
+    background-color: white;
+}
+
+.singleCourse p {
+    font-size: 20px;
+    padding: 10px 20px;
 }
