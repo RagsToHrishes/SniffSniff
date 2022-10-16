@@ -16,15 +16,20 @@ body {
 
 @font-face {
   font-family: "HelveticaRegular";
-  src: url('../fonts/Helvetica.ttf');
+  src: url('../fonts/Helvetica.otf');
 }
 
 @font-face {
   font-family: "HelveticaLight";
-  src: url('../fonts/helvetica-light-587ebe5a59211.ttf');
+  src: url('../fonts/Helvetica-Light.otf');
 }
 
 @font-face {
   font-family: "HelveticaBold";
-  src: url('../fonts/Helvetica-Bold.ttf');
+  src: url('../fonts/Helvetica Bold.ttf');
+}
+
+@font-face {
+  font-family: "HelveticaItalic";
+  src: url('../fonts/Helvetica-Oblique.otf');
 }
