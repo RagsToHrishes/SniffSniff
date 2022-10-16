@@ -2,7 +2,7 @@ import styles from './css/Search.module.css'
 import Header from './components/Header'
 
 export default function Search({ data, category }) {
-    console.log(data)
+
     return (
         <div>
             <Header />
