@@ -22,6 +22,10 @@ export default function Home({ data }) {
   )
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36b8e1fbbcd87784a58c1a47e894d59bb65552cf
 export const getServerSideProps = async () => {
 
   const data = {
