@@ -70,8 +70,6 @@ export const getServerSideProps = async () => {
 
         client.release();
 
-        console.log(courses)
-
         const coursesList = []
         const category = new Set()
 

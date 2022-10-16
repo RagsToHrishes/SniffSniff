@@ -12,9 +12,9 @@ export default function Home() {
       <div>
         <div className={styles.section}>
           <div className={styles.sectiontext}>
-            <h1 className={styles.orange}>Don't be lost!</h1>
+            <h1 className={styles.orange}>Don&apos;t be lost!</h1>
             <h1 className={styles.black}>Sniff out your classmates</h1>
-            <p className={styles.caption}>Find where your classmates are online, discover new information, and stay up to date with your class’s content.</p>
+            <p className={styles.caption}>Find where your classmates are online, discover new information, and stay up to date with your class&apos;s content.</p>
           </div>
           <img className={styles.mascot} src='/mascot.png'/>
         </div>
