@@ -14,13 +14,16 @@ with open('examples.txt') as f:
     temp = None
     exampletemp = None
     for line in f.readlines():
-        if(line[0] == "$"):
-            ExampleDict[line[1:]] = {}
-            temp = line[1:]
-        if(line[0:7]) == "Example":
-            exampletemp = line[8:]
-        if(line[0:5]) == "Label":
-            ExampleDict[temp][exampletemp] = line[6:]
+        line = line.replace("\n","");
+        if(len(line) > 0):
+            if(line[0] == "$"):
+                ExampleDict[line[1:]] = {}
+                temp = line[1:]
+            if(line[0:7]) == "Example":
+                exampletemp = line[8:]
+            if(line[0:5]) == "Label":
+                ExampleDict[temp][exampletemp] = line[6:]
+
 
 class cohereExtractor():
     def __init__(self, examples, example_labels, labels, task_desciption, example_prompt):
@@ -48,10 +51,18 @@ class cohereExtractor():
       return(extraction.generations[0].text[:-1])
 
 
-cohereMovieExtractor = cohereExtractor([e[1] for e in movie_examples], 
-                                       [e[0] for e in movie_examples], [],
+DateExtractor = cohereExtractor([desc for desc in ExampleDict["Exam Dates"].keys()], 
+                                [ExampleDict["Exam Dates"][key] for key in ExampleDict["Exam Dates"].keys()], [],
                                        "", 
-                                       "extract the movie title from the post:")
+                                       "extract the exam dates from the post:")
 
+"""                  
+examp = "bruh the midtern is oct 13 and i cant make it bbbbb"
 
+try:
+    extracted_text = DateExtractor.extract(examp)
+    print(extracted_text)
+except Exception as e:
+    print('ERROR: ', e)
+"""
 

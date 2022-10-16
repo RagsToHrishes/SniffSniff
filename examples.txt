@@ -10,3 +10,9 @@ Label:Final: Today
 ---
 Example:Yeah, The midterm is tomorrow :(
 Label: Midterm:Tomorrow
+---
+Example: Oh shucks, the midterm is day after tommorow
+Label: Midterm: Day After Tomorrow
+---
+Example:Ahh I don't like this class!
+Label: None
