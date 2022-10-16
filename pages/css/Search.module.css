@@ -75,3 +75,8 @@
 .orange {
     color: #FF9F00;
 }
+
+.courseClick {
+    background-color: #FF9F00;
+    border-radius: 10px;
+}

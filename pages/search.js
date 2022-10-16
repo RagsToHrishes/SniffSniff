@@ -34,7 +34,7 @@ export default function Search({ data, category }) {
                         <div className={styles.courses}>
                             {data && data.filter(values => values[2].includes(categorySelect)).filter(values => values[0].toLowerCase().includes(searchQuery.toLowerCase()) || values[1].toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
                                 <div key={index} className={styles.singleCourse} onClick={() => setCourseSelect(item[0])}>
-                                    <p>{item[0]}</p>
+                                    <p className = {courseSelect == item[0] ? styles.courseClick : styles.nothing}>{item[0]}</p>
                                 </div>
                             ))}
                         </div>
