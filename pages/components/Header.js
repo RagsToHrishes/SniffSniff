@@ -4,10 +4,10 @@ export default function Header() {
     return (
         <div>
             <div className={styles.header}>
-                <img  src='/icon.png' />
-                <div className={styles.sound}>
-                    <p item='text'>sniff</p>
-                    <p item='text'>sniff</p>
+                <img  src='/icon.png'/>
+                <div className={styles.options}>
+                    <p>Search</p>
+                    <p>Courses</p>
                 </div>
             </div>
         </div>
