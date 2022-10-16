@@ -1,32 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Header from './components/Header'
 
 export default function Home({ data }) {
-  console.log(data)
+
   return (
     <div>
+      <Header />
+      <div>
+        <div className={styles.section}>
+          <div className={styles.sectiontext}>
+            <h1>Don't be lost!</h1>
+            <h1>Sniff out your friends!</h1>
+          </div>
+          <img src='/mascot.png'/>
+        </div>
+      </div>
 
     </div>
   )
 }
-
-const { Client } = require("pg");
-
-const client = new Client(process.env.DATABASE_URL);
-
-(async () => {
-  await client.connect();
-  try {
-    const results = await client.query("SELECT NOW()");
-    console.log(results);
-  } catch (err) {
-    console.error("error executing query:", err);
-  } finally {
-    client.end();
-  }
-})();
-
 
 export const getServerSideProps = async () => {
 

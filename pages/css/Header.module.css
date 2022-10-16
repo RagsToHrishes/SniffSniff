@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+}
+
+.sound {
+    display: flex;
+    flex-direction: column;
+    transform: rotate(-7.47deg);
+    row-gap: -10px;
+    line-height: 0px;
+}
