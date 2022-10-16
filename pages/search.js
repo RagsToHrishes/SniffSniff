@@ -44,7 +44,13 @@ export default function Search({ data, category }) {
                         <p>Select and join the right class channels</p>
                         {courseSelect && data.filter(values => values[0] == courseSelect).map((item, index) => (
                             <div key={index}>
-                                <h1>{item[0]}</h1>
+                                {!item[3] && <div className={styles.noChannels}>
+                                    <p>It seems like there are no channels for the class you are searching for...</p>
+                                    <h2>Be the one to create it!</h2>
+                                    <p>Once you create a channel it will update into our database so other classmates can sniff you out too!</p>
+                                    <img src="./channelavatar.png"/>
+                                </div>
+                                }
                             </div>
                         ))}
                     </div>

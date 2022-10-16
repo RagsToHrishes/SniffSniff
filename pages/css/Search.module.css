@@ -80,3 +80,7 @@
     background-color: #FF9F00;
     border-radius: 10px;
 }
+
+.noChannels img {
+    width: 500px;
+}
