@@ -2,25 +2,29 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "TerminaDemi";
+  src: url('../fonts/Fontspring-DEMO-termina-bold.otf');
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: "TerminaBold";
+  src: url('../fonts/Fontspring-DEMO-termina-demi.otf');
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+@font-face {
+  font-family: "HelveticaRegular";
+  src: url('../fonts/Helvetica.ttf');
+}
+
+@font-face {
+  font-family: "HelveticaLight";
+  src: url('../fonts/helvetica-light-587ebe5a59211.ttf');
+}
+
+@font-face {
+  font-family: "HelveticaBold";
+  src: url('../fonts/Helvetica-Bold.ttf');
 }
