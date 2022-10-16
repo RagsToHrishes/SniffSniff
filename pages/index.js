@@ -55,9 +55,7 @@ export default function Home() {
             </div>
             <div className={styles.small2}>
               <p className={styles.sniffoBody}> Add your own Sniffodoo to your channels!</p>
-              <Link href="./search.js">
-                <a className={styles.downloadButton}>Download Sniffodoo</a>
-              </Link>
+              <a className={styles.downloadButton} href="https://discord.com/oauth2/authorize?client_id=1031015445546930196&permissions=8&scope=bot" target="_blank" rel="noopener noreferrer">Download Sniffodoo</a>
             </div>
           </div>
         </div>

@@ -20,3 +20,7 @@
     text-decoration: none;
     color: black;
 }
+
+.header a:hover {
+    color: #FF9F00;
+}

@@ -1,7 +1,11 @@
 import styles from './css/Search.module.css'
 import Header from './components/Header'
+import { useState } from 'react'
 
 export default function Search({ data, category }) {
+
+    const [categorySelect, setCategorySelect] = useState('')
+    const [searchQuery, setSearchQuery] = useState('')
 
     return (
         <div>
@@ -9,7 +13,7 @@ export default function Search({ data, category }) {
             <div className={styles.search}>
                 <div className={styles.searchButton}>
                     <img src="/search.png" width="20px" height="20px"/>
-                    <input type="text" placeholder="search class here..."/>
+                    <input type="text" placeholder="search class here..." onChange={e => setSearchQuery(e.target.value)}/>
                 </div>
                 <div className={styles.results}>
                     <div>
@@ -17,7 +21,7 @@ export default function Search({ data, category }) {
                         <p>Scroll and click your class category</p>
                         <div className={styles.category}>
                             {category && category.map((item, index) => (
-                                <div key={index}>
+                                <div key={index} onClick={() => setCategorySelect(item)}>
                                     <p>{item}</p>
                                 </div>
                             ))}
@@ -27,7 +31,7 @@ export default function Search({ data, category }) {
                         <h1>Courses</h1>
                         <p>Scroll, find, and click your class number</p>
                         <div className={styles.courses}>
-                            {data && data.map((item, index) => (
+                            {data && data.filter(values => values[2].includes(categorySelect)).filter(values => values[0].toLowerCase().includes(searchQuery.toLowerCase()) || values[1].toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
                                 <div key={index} className={styles.singleCourse}>
                                     <p>{item[0]}</p>
                                 </div>
