@@ -4,10 +4,11 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-class Class(Base):
-    """The Class corresponds to the "class" database table."""
-    __tablename__ = 'class'
+class Course(Base):
+    """The Course corresponds to the "course" database table."""
+    __tablename__ = 'course'
     id = Column(UUID(as_uuid=True), primary_key=True)
     course = Column(String)
-    descrip = Column(String)
+    title = Column(String)
+    subjectArea = Column(String)
     discord = Column(String)

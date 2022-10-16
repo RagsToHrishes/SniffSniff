@@ -16,12 +16,15 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.implicitly_wait(60)
 driver.get('https://berkeleytime.com/catalog.html')
 
-class_codes = []
-class_names = []
-raw_desc = []
+classes = set()
 
 all_classes = driver.find_elements(By.CLASS_NAME, "filter-card-info")
 for ind_class in all_classes:
-    print(ind_class.get_attribute('h6'))
+    name = ind_class.find_element(By.TAG_NAME, "h6").text
+    desc = ind_class.find_element(By.CLASS_NAME, "filter-card-info-desc").text
 
+    classes.add((name, desc, ''))
 
+# selenium scroll to bottom
+
+print(classes)
