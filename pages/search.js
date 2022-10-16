@@ -6,6 +6,7 @@ export default function Search({ data, category }) {
 
     const [categorySelect, setCategorySelect] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
+    const [courseSelect, setCourseSelect] = useState('')
 
     return (
         <div>
@@ -21,7 +22,7 @@ export default function Search({ data, category }) {
                         <p>Scroll and click your class category</p>
                         <div className={styles.category}>
                             {category && category.map((item, index) => (
-                                <div key={index} onClick={() => setCategorySelect(item)}>
+                                <div key={index} onClick={() => setCategorySelect(item)} className={categorySelect == item ? styles.orange : styles.nothing}>
                                     <p>{item}</p>
                                 </div>
                             ))}
@@ -32,7 +33,7 @@ export default function Search({ data, category }) {
                         <p>Scroll, find, and click your class number</p>
                         <div className={styles.courses}>
                             {data && data.filter(values => values[2].includes(categorySelect)).filter(values => values[0].toLowerCase().includes(searchQuery.toLowerCase()) || values[1].toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
-                                <div key={index} className={styles.singleCourse}>
+                                <div key={index} className={styles.singleCourse} onClick={() => setCourseSelect(item[0])}>
                                     <p>{item[0]}</p>
                                 </div>
                             ))}
@@ -41,6 +42,11 @@ export default function Search({ data, category }) {
                     <div>
                         <h1>Channels</h1>
                         <p>Select and join the right class channels</p>
+                        {courseSelect && data.filter(values => values[0] == courseSelect).map((item, index) => (
+                            <div key={index}>
+                                <h1>{item[0]}</h1>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -83,7 +89,7 @@ export const getServerSideProps = async () => {
     }
 
     const courseInfo = await getCourses();
-    const data = courseInfo[0]
+    const data = courseInfo[0].sort()
     const category = Array.from(courseInfo[1])
     category.sort()
 
