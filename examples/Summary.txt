@@ -1,0 +1,18 @@
+$Summary
+Example: OMG I like totally love the GSI hes so hot, oh I had a bagel yesterday. Why is the weather so hot today I’m having a hard time focusing on the content of the class. Oh wait anyone down for a study group together tomorrow for the final on Friday?
+Label: Looking for study group and the final is on Friday. 
+--
+Example: Did anyone know when prof is hosting office hours? I almost feel asleep today in class. Today professor talked about neural networks and he said he will open the assignment on monday. He’s a little bit slow though and a little bit hard to understand. Overall a very nice professor though. 
+Label: Professor talked about neural networks and the assignment will open up on Monday. 
+–-
+Example: bruh why is the exam coming up so soon…we’re literally only 3 weeks in and we have a midterm on Friday that is worth 80% of your grade? That is absolutely insane. And it lasts for 2 hours?? On a midterm?? Bruh im dropping out. So true. 
+Label: Midterm is on Friday, is worth 80% of the grade and the Midterm lasts for 2 hours. 
+–-
+Example: Math55 is absolutely insane. LIKE WHY!!! Our midterm average was literally so ass 22/50? That was insane. How. 
+Label: The midterm average is 22/50. 
+–-
+Example: Does anyone know when the project is due? I think it’s due on Friday but if you finish on Thursday you’ll get 2 points extra credit I believe. I am so sleepy. This nightmare never ends. Class attendance is mandatory. Ethan is lame.
+Label: The project is due on Friday and you can get 2 points extra credit if turned in on Thursday and class attendance is mandatory. 
+--
+Example: I got my bank card stolen! Like how fucking dare you! Like ugh I was about to head to kips tmr like why does this happen to me I am so tired right nwo dont talk to m e. midterm in two weeks. Im so  nervous.
+Label: midterm in two weeks

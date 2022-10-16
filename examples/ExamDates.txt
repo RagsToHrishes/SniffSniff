@@ -1,18 +1,30 @@
 $Exam Dates
 Example:Midterm is 2/25! You know what that means, a server wide discord study session :D Info will be released soon so we can determine the best time we can all study together. Format suggestions would be great!
-Label:Midterm: February 25th
+Label:MainMidterm is on February 25th
 ---
 Example:I was looking at the syllabus and the midterms for both classes are oct 20 and the finals on dec 16
-Label:Midterm: October 20th, Final: December 16th
+Label:MainMidterm is on October 20th and the Final is on December 16th
 ---
 Example:I can tell them "today" but I have a 2hr long final in 20 minutes so itd technically be midnight :(
-Label:Final: Today
+Label:Final is Today
 ---
 Example:Yeah, The midterm is tomorrow :(
-Label:Midterm:Tomorrow
+Label:MainMidterm is Tomorrow
 ---
-Example: Oh shucks, the midterm is day after tommorow
-Label:Midterm: Day After Tomorrow
+Example:Oh shucks, the midterm is day after tommorow
+Label:MainMidterm is Day After Tomorrow
 ---
 Example:Ahh I don't like this class!
+Label:None
+---
+Example:Oh I think midterm was yeday
+Label:MainMidterm is Yesterday
+---
+Example:Midterm 1 is tomorrow but the final is in 2 weeks
+Label:Midterm1 is tomorrow and the Final is in 2 weeks
+---
+Example:Midterm 2 is tomorrow but the final is in 2 weeks
+Label:Midterm2 is tomorrow and the Final is in 2 weeks
+---
+Example:sniff improve
 Label:None

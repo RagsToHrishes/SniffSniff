@@ -8,21 +8,6 @@ api_key = 'fVYh2kByOseZVbkvSQWneb9chpcPE7oG1tlIl0Ij'
 
 co = cohere.Client(api_key)
 
-ExampleDict = {}
-#Get Prompt Examples for NLP
-with open('examples.txt') as f:
-    temp = None
-    exampletemp = None
-    for line in f.readlines():
-        line = line.replace("\n","");
-        if(len(line) > 0):
-            if(line[0] == "$"):
-                ExampleDict[line[1:]] = {}
-                temp = line[1:]
-            if(line[0:7]) == "Example":
-                exampletemp = line[8:]
-            if(line[0:5]) == "Label":
-                ExampleDict[temp][exampletemp] = line[6:]
 
 
 class cohereExtractor():
@@ -45,16 +30,12 @@ class cohereExtractor():
       extraction = co.generate(
           model='large',
           prompt=self.make_prompt(example),
-          max_tokens=10,
+          max_tokens=100,
           temperature=0.1,
           stop_sequences=["\n"])
       return(extraction.generations[0].text[:-1])
 
 
-DateExtractor = cohereExtractor([desc for desc in ExampleDict["Exam Dates"].keys()], 
-                                [ExampleDict["Exam Dates"][key] for key in ExampleDict["Exam Dates"].keys()], [],
-                                       "", 
-                                       "extract the exam dates from the post:")
 
 """                  
 examp = "bruh the midtern is oct 13 and i cant make it bbbbb"

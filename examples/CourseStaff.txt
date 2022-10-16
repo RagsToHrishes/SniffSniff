@@ -1,0 +1,36 @@
+$Course Staff
+Example:During the lecture today, Professor Adhikari said that there will be an optional meet up for fun in Memorial Glade starting at 11am! If you went, tell us how it was!
+Label:The professor is Adhikari
+--
+Example:Has anyone taken CS 88 with Michael Ball? If so, how is the prof?
+Label:The professor is Michael Ball 
+--
+Example:Has anyone taken CS 88 with the best GSI in the world Michael Ball? If so, didn’t you love it?
+Label:The GSI is Michael Ball 
+--
+Example:I’m currently taking 61b this fall with hilfinger, which is the same prof ull have I believe.
+Label:The professor is Hilfinger 
+--
+Example:as Prof Adhikari said: "it takes time to write a long letter, and it takes more time to write a short one"
+Label:The professor is Adhikari
+--
+Example:some will and some wont according to prof. adhikari
+Label:The professor is Adhikari
+--
+Example:i think prof. chan did tell us about the 3 required readings for tomorrow midterm, does anyone remember abt it?
+Label:The professor is Chan
+--
+Example:took ling100 in fall of last year with Jenks as well, he’s a real nice prof, I think you’ll like it
+Label:The professor is Jenks
+--
+Example:Should i message cameron or prof li
+Label:The professor is Cameron and Li
+--
+Example:LMFAOO SAME HERE. I really wanna see Professor Li live and get to interact with everyone again but like
+Label:The professor is Li 
+–-
+Example:that professor is as chadly as paul
+Label:The professor is Paul 
+--
+Example:oh that homework was so hard
+Label:None
