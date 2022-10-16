@@ -23,7 +23,7 @@ export default function Search({ data, category }) {
                         <p>Scroll and click your class category</p>
                         <div className={styles.category}>
                             {category && category.map((item, index) => (
-                                <div key={index} onClick={() => setCategorySelect(item)} className={categorySelect == item ? styles.orange : styles.nothing}>
+                                <div key={index} onClick={() => item == categorySelect ? setCategorySelect('') : setCategorySelect(item)} className={categorySelect == item ? styles.orange : styles.nothing}>
                                     <p>{item}</p>
                                 </div>
                             ))}
@@ -34,7 +34,7 @@ export default function Search({ data, category }) {
                         <p>Scroll, find, and click your class number</p>
                         <div className={styles.courses}>
                             {data && data.filter(values => values[2].includes(categorySelect)).filter(values => values[0].toLowerCase().includes(searchQuery.toLowerCase()) || values[1].toLowerCase().includes(searchQuery.toLowerCase())).map((item, index) => (
-                                <div key={index} className={styles.singleCourse} onClick={() => setCourseSelect(item[0])}>
+                                <div key={index} className={styles.singleCourse} onClick={() => item[0] == courseSelect ? setCourseSelect('') : setCourseSelect(item[0])}>
                                     <p className = {courseSelect == item[0] ? styles.courseClick : styles.nothing}>{item[0]}</p>
                                 </div>
                             ))}
@@ -54,8 +54,7 @@ export default function Search({ data, category }) {
                                         <a>Create Slack Channel</a>
                                     </div>
                                     <img src="./channelavatar.png"/>
-                                </div>
-                                }
+                                </div>}
                             </div>
                         ))}
                     </div>
