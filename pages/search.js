@@ -10,23 +10,26 @@ export default function Search({ data, category }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = {
-            course: courseSelect,
-            discord: e.target.value
+
+        if (e.target.value != ''){            
+            const data = {
+                course: courseSelect,
+                discord: e.target[0].value
+            }
+
+            const JSONdata = JSON.stringify(data);
+            const endpoint = '/api/updatediscord';
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSONdata
+            }
+
+            await fetch(endpoint, options).catch(err => console.log(err))
         }
-
-        const JSONdata = JSON.stringify(data);
-        const endpoint = '/api/updatediscord';
-
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSONdata
-        }
-
-        await fetch(endpoint, options).catch(err => console.log(err))
     }
 
     return (
@@ -79,7 +82,6 @@ export default function Search({ data, category }) {
                                     <img src="./channelavatar.png"/>
                                 </div>}
                                 {item[3] && <div className={styles.hasChannels}>
-                                    {console.log(item[3])}
                                     <div className={styles.discordBox}>
                                         <img src='./discord.png'/>
                                         <a href={item[3]} target="_blank" rel="noopener noreferrer">Join Discord Link</a>
