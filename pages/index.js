@@ -59,7 +59,6 @@ export default function Home() {
                 <a className={styles.downloadButton}>Download Sniffodoo</a>
               </Link>
             </div>
-          
           </div>
         </div>
       </div>

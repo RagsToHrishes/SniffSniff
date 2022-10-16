@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 0px 100px;
+    margin: 150px 100px;
 }
 
 .sectiontext {
@@ -53,7 +53,13 @@
     column-gap: 200px;
     justify-content: space-between;
     margin: 0px 150px;
-    max-width: 200px;
+}
+
+.container1, .container2, .container3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .sec2_dogs {
@@ -72,6 +78,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 0;
 }
 
 .h3 {
@@ -87,15 +94,11 @@
     display: flex;
     flex-direction: row;
     column-gap: 150px;
-    justify-content: center;
-
-
-
+    justify-content: space-between;
 }
 
 .section3 {
-    margin: 88px 100px;
-
+    margin: 150px 100px 100px 100px;
 }
 
 .sniffodoo {
@@ -120,8 +123,7 @@
 .smallContainers {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-
+    max-width: 600px;
 }
 
 .small2 {
