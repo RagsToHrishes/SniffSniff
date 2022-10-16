@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Header from './components/Header'
+import Link from 'next/link'
 
 export default function Home() {
 
@@ -43,13 +44,22 @@ export default function Home() {
       <div className={styles.section3}>
         <h1 className={styles.sec3head}>Meet Sniffodoo!</h1>
         <div className={styles.bigContainer}>
-          <img className={styles.bigDog} src='/sniffodoo.png'/>
+          <img className={styles.sniffodoo} src='/sniffodoo.png'/>
           <div className={styles.smallContainers}>
-            <h1>Sniffodoo!</h1>
-            <p>your own detective who will sniff out and give you a summary of what you missed 
-              while you were away from your class channels. Say goodbye to your 100+ unread messages.</p>
+            <div className={styles.small1}>
+              <h1 className={styles.bigSniffoDoo}>Sniffodoo!</h1>
+              <p className={styles.sniffoBody}>Your own detective who will sniff out and give you a summary of what you missed 
+                while you were away from your class channels.</p>
 
-            <p>Save time. Say Goodbye to your 1000+ unread messages.</p>
+              <p className={styles.sniffoBody}>Save time. Say Goodbye to your 1000+ unread messages.</p>
+            </div>
+            <div className={styles.small2}>
+              <p className={styles.sniffoBody}> Add your own Sniffodoo to your channels!</p>
+              <Link href="./search.js">
+                <a className={styles.downloadButton}>Download Sniffodoo</a>
+              </Link>
+            </div>
+          
           </div>
         </div>
       </div>

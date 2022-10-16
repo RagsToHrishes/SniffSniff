@@ -35,7 +35,7 @@
     height: 400px;
 }
 
-.section2{
+.section2 {
     margin-top: 100px;
 }
 
@@ -75,15 +75,74 @@
 }
 
 .h3 {
-    display:flex;
+    display: flex;
     font-family: 'TerminaBold';
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .bigContainer {
     display: flex;
     flex-direction: row;
+    column-gap: 150px;
+    justify-content: center;
+
+
+
+}
+
+.section3 {
+    margin: 88px 100px;
+
+}
+
+.sniffodoo {
+    height: 400px;
+}
+
+.sec3head {
+    font-family: 'TerminaBold';
+    font-size: 20px;
+}
+
+.bigSniffoDoo {
+    font-family: 'TerminaBold';
+    font-size: 40px;
+}
+
+.sniffoBody {
+    font-family: 'HelveticaRegular';
+    font-size: 19px;
+}
+
+.smallContainers {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+
+}
+
+.small2 {
+    margin-top: 40px;
+    line-height: 1.5;
+}
+
+.downloadButton {
+    background-color: #896BFD;
+    font-family: 'TerminaBold';
+    color: white;
+    border-radius: 15px;
+    padding: 15px 50px;
+    text-decoration: none;
+
+}
+
+.downloadButton:hover {
+    background-color: white;
+    border: solid 2px;
+    border-radius: 15px;
+    color: #896BFD;
+
 }
